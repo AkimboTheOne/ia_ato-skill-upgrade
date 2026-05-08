@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "ato-skill-upgrade"
-version = "0.8.0"
+version = "0.8.1"
 description = "Controlled skill upgrade planning and documentation CLI"
 requires-python = ">=3.11"
 dependencies = []

@@ -40,6 +40,7 @@ If a required binary such as `make` or `python>=3.11` is missing, setup prints a
 - Documentation writes require `--write --yes`.
 - `document` mode does not modify code, tests, scripts, schemas, contracts, or build files.
 - Post-execution documentation requires evidence from a plan, summary, manifest, diff, or validation report.
+- The canonical memory terminology for stable definitions is maintained in Spanish in `memory/terminology-es.md`.
 
 ## Current Capability
 
