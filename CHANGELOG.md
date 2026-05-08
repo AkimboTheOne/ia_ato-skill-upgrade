@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.8.1
+
+- Normalized the Spanish canonical terminology memory file.
+- Aligned the PO baseline memory scaffold with the documented CLI memory paths.
+- Fixed the `refine feature` example path in the PO baseline document.
+- Bumped package version metadata to `0.8.1`.
+
 ## 0.8.0
 
 - Added GitHub Actions CI.
