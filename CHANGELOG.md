@@ -6,6 +6,7 @@
 - Added release governance documentation and checklist.
 - Synchronized package version metadata at `0.8.0`.
 - Added version consistency validation.
+- Added release notes for `v0.8.0`.
 
 ## 0.2.0
 

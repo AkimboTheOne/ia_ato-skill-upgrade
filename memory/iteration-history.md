@@ -47,3 +47,9 @@ Updated onboarding based on the reference `ia_ato-skill-ado-cli` setup improveme
 - Added release governance documentation.
 - Synchronized version metadata.
 - Added version validation.
+
+## 0.8.0 Release Preparation
+
+- Added release notes.
+- Prepared branch for PR toward `main`.
+- Planned version tag `v0.8.0`.

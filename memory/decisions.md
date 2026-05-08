@@ -15,3 +15,5 @@
 - Use `ready-with-notes` for high-scoring skills with small evidence gaps.
 - Move current implementation version to `0.8.0` after CI and release governance are added.
 - Keep CI minimal: setup, validate, and tests.
+- Use tag `v0.8.0` for the first solid pre-productive release.
+- Open a PR into `main` for traceable promotion instead of merging directly.
