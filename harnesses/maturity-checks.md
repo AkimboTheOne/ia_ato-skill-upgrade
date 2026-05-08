@@ -10,3 +10,4 @@
 - Missing system binaries are treated as host prerequisites, not vendored repo contents.
 - External review produces category scores, not only a flat pass/fail result.
 - Run contracts should be present before declaring machine-readiness.
+- High score with small gaps should be reported as `ready-with-notes`, not a hard failure.

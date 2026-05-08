@@ -34,3 +34,9 @@ Updated onboarding based on the reference `ia_ato-skill-ado-cli` setup improveme
 - Added self-review guardrails.
 - Blocked writes during self-review.
 - Capped self-review recursion depth at 1.
+
+## 0.7.0 Validation And Scoring Cut
+
+- Added lightweight contract validation.
+- Added richer maturity statuses.
+- Completed mature fixture examples for cleaner smoke testing.

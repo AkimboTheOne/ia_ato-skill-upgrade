@@ -1,2 +1,1 @@
-{"type": "object", "required": ["operation", "result"]}
-
+{"$schema": "https://json-schema.org/draft/2020-12/schema", "title": "fixture run response", "type": "object", "required": ["operation", "result"]}

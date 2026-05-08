@@ -61,7 +61,7 @@ def evaluate_maturity(repo) -> dict:
 
     categories = build_maturity_matrix(signals)
     score = round(sum(item["score"] for item in categories.values()) / len(categories))
-    status = "ready-for-next-cut" if score >= 80 and not gaps and not warnings else "needs-work"
+    status = classify_status(score, gaps, warnings)
 
     return {
         "mode": "maturity",
@@ -96,6 +96,17 @@ def build_maturity_matrix(signals: dict) -> dict:
         "security_write_policy": score_category(signals, ["security_docs", "write_policy_docs"]),
         "evidence_exports": score_category(signals, ["examples", "contracts"]),
     }
+
+
+def classify_status(score: int, gaps: list[str], warnings: list[str]) -> str:
+    if score >= 95 and not warnings:
+        if not gaps:
+            return "ready-for-next-cut"
+        if len(gaps) <= 2:
+            return "ready-with-notes"
+    if score >= 80 and len(gaps) <= 4 and not warnings:
+        return "needs-minor-work"
+    return "needs-work"
 
 
 def score_category(signals: dict, keys: list[str]) -> dict:

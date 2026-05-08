@@ -10,6 +10,7 @@ from ato_skill_upgrade.core.natural_language import classify_request
 from ato_skill_upgrade.core.documentation_reconciler import document_change
 from ato_skill_upgrade.core.external_review import review_external
 from ato_skill_upgrade.core.run_contract import run_payload
+from ato_skill_upgrade.core.schema_validator import validate_json_schemas
 from ato_skill_upgrade.errors import SkillUpgradeError
 
 
@@ -53,6 +54,17 @@ class CoreBehaviorTests(unittest.TestCase):
         result = evaluate_maturity(repo)
         self.assertEqual(result["status"], "needs-work")
         self.assertTrue(result["gaps"])
+
+    def test_fixture_mature_skill_is_ready(self) -> None:
+        repo = Path(__file__).resolve().parents[1] / "examples" / "sample-skills" / "mature-skill"
+        result = evaluate_maturity(repo)
+        self.assertIn(result["status"], {"ready-for-next-cut", "ready-with-notes"})
+        self.assertGreaterEqual(result["score"], 95)
+
+    def test_schema_validation_checks_contracts(self) -> None:
+        repo = Path(__file__).resolve().parents[1]
+        result = validate_json_schemas(repo)
+        self.assertEqual(result["status"], "ok")
 
     def test_self_review_blocks_write(self) -> None:
         repo = Path(__file__).resolve().parents[1]

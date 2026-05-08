@@ -16,6 +16,7 @@ from ato_skill_upgrade.core.maturity_evaluator import evaluate_maturity, render_
 from ato_skill_upgrade.core.natural_language import classify_request
 from ato_skill_upgrade.core.outputs import output_paths, write_json, write_text
 from ato_skill_upgrade.core.run_contract import run_payload
+from ato_skill_upgrade.core.schema_validator import validate_json_schemas
 from ato_skill_upgrade.errors import SkillUpgradeError
 
 
@@ -73,6 +74,9 @@ def cmd_doctor(args: argparse.Namespace) -> int:
 
 def cmd_validate(args: argparse.Namespace) -> int:
     result = validate_structure(Path(args.repo).resolve())
+    schema_result = validate_json_schemas(Path(args.repo).resolve())
+    result["schemas"] = schema_result
+    result["status"] = "ok" if result["status"] == "ok" and schema_result["status"] == "ok" else "error"
     emit(result, args.format == "json")
     return 0 if result["status"] == "ok" else 7
 

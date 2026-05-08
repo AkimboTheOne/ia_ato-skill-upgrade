@@ -12,3 +12,5 @@
 - Sample skill fixtures are the preferred way to test maturity and feature suggestions without depending on remote repos.
 - Self-review is allowed only as dry-run with maximum depth 1.
 - External review reports are detected evidence for documentation reconciliation.
+- Maturity status should distinguish minor gaps from material failure.
+- Schema validation is lightweight and dependency-free in this phase.

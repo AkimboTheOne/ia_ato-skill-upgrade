@@ -19,3 +19,6 @@
 - Added sample skill fixtures for mature, weak setup, and scope-inflated cases.
 - Added document reconciler support for external review reports.
 - Added self-review guardrails that block writes and cap recursion depth.
+- Added lightweight JSON schema validation.
+- Added maturity status levels beyond pass/fail.
+- Completed mature sample-skill fixture examples.

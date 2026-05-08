@@ -14,3 +14,4 @@
 - Sample skill fixtures exercise mature and weak setup paths.
 - `document change --self-review --write` is blocked.
 - `document change --review-report` treats external review JSON as detected evidence.
+- `validate` checks contract schema hygiene.

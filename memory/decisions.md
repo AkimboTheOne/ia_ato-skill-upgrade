@@ -11,3 +11,5 @@
 - Keep sample skills local and synthetic for deterministic smoke tests.
 - Block write operations during self-review to prevent recursive self-modification.
 - Let document reconciliation consume external review reports as detected evidence.
+- Keep JSON schema validation dependency-free until a stronger validator is justified.
+- Use `ready-with-notes` for high-scoring skills with small evidence gaps.
