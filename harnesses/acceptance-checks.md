@@ -15,3 +15,5 @@
 - `document change --self-review --write` is blocked.
 - `document change --review-report` treats external review JSON as detected evidence.
 - `validate` checks contract schema hygiene.
+- `validate` checks version metadata consistency.
+- CI runs setup, validation, and tests.

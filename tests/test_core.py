@@ -11,6 +11,7 @@ from ato_skill_upgrade.core.documentation_reconciler import document_change
 from ato_skill_upgrade.core.external_review import review_external
 from ato_skill_upgrade.core.run_contract import run_payload
 from ato_skill_upgrade.core.schema_validator import validate_json_schemas
+from ato_skill_upgrade.core.versioning import validate_version
 from ato_skill_upgrade.errors import SkillUpgradeError
 
 
@@ -64,6 +65,11 @@ class CoreBehaviorTests(unittest.TestCase):
     def test_schema_validation_checks_contracts(self) -> None:
         repo = Path(__file__).resolve().parents[1]
         result = validate_json_schemas(repo)
+        self.assertEqual(result["status"], "ok")
+
+    def test_version_metadata_is_synchronized(self) -> None:
+        repo = Path(__file__).resolve().parents[1]
+        result = validate_version(repo)
         self.assertEqual(result["status"], "ok")
 
     def test_self_review_blocks_write(self) -> None:

@@ -14,3 +14,5 @@
 - External review reports are detected evidence for documentation reconciliation.
 - Maturity status should distinguish minor gaps from material failure.
 - Schema validation is lightweight and dependency-free in this phase.
+- v0.8 introduces CI and version consistency validation.
+- Release readiness requires setup, validate, tests, maturity analysis, external review, changelog, memory, and synchronized version metadata.

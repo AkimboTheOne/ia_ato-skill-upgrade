@@ -12,3 +12,4 @@ ato-skill-upgrade validate --format json
 Validation checks the expected baseline files and directories.
 `make test` compiles Python sources and runs the stdlib unittest suite.
 `validate` also performs lightweight JSON schema hygiene checks for files under `contracts/`.
+It also verifies version metadata consistency between `pyproject.toml` and package code.

@@ -40,3 +40,10 @@ Updated onboarding based on the reference `ia_ato-skill-ado-cli` setup improveme
 - Added lightweight contract validation.
 - Added richer maturity statuses.
 - Completed mature fixture examples for cleaner smoke testing.
+
+## 0.8.0 CI And Release Governance Cut
+
+- Added GitHub Actions CI.
+- Added release governance documentation.
+- Synchronized version metadata.
+- Added version validation.

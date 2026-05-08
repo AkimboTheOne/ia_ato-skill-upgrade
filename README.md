@@ -57,6 +57,7 @@ Implemented:
 - document-change dry-run reconciliation with evidence classification, preview, manifest, and validation report.
 - machine-friendly `run --payload-file` contracts.
 - guarded self-review for dry-run documentation planning.
+- CI and release governance checks.
 
 The local setup pattern is intentionally part of maturity knowledge: a downloaded skill should expose `./setup-skill.sh`, install into `.venv`, avoid global Python writes, and document the boundary between declared Python dependencies and host binaries.
 

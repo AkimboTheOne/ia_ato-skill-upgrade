@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.8.0
+
+- Added GitHub Actions CI.
+- Added release governance documentation and checklist.
+- Synchronized package version metadata at `0.8.0`.
+- Added version consistency validation.
+
 ## 0.2.0
 
 - Added baseline v0.2 repository scaffold.

@@ -11,3 +11,4 @@
 - External review produces category scores, not only a flat pass/fail result.
 - Run contracts should be present before declaring machine-readiness.
 - High score with small gaps should be reported as `ready-with-notes`, not a hard failure.
+- Release governance and CI are required before calling the skill v0.8-ready.

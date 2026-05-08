@@ -13,3 +13,5 @@
 - Let document reconciliation consume external review reports as detected evidence.
 - Keep JSON schema validation dependency-free until a stronger validator is justified.
 - Use `ready-with-notes` for high-scoring skills with small evidence gaps.
+- Move current implementation version to `0.8.0` after CI and release governance are added.
+- Keep CI minimal: setup, validate, and tests.

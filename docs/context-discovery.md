@@ -10,3 +10,4 @@ ato-skill-upgrade schema --json
 
 Context discovery reports activation, supported modes, workspace/export paths, guardrails, and available machine-readable schemas.
 `run` can expose the same operations through JSON payloads.
+Release governance is documented in `docs/release-governance.md`.
