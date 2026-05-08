@@ -7,3 +7,5 @@
 - Treat installation robustness as a maturity concern: detect host prerequisites, install into `.venv`, and never vendor binaries or compilers.
 - Add `review external` as the first productive path for evaluating other skills without modifying them.
 - Separate external review recommendations into maturity suggestions and feature suggestions.
+- Add `run` contracts before deeper document reconciliation so downstream agents can call stable operations.
+- Keep sample skills local and synthetic for deterministic smoke tests.

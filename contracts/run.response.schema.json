@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ato-skill-upgrade run response",
+  "type": "object",
+  "required": ["operation", "result"],
+  "properties": {
+    "operation": {"type": "string"},
+    "result": {
+      "type": ["object", "array", "string", "number", "boolean", "null"]
+    }
+  },
+  "additionalProperties": true
+}
+

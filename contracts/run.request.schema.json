@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ato-skill-upgrade run request",
+  "type": "object",
+  "required": ["operation"],
+  "properties": {
+    "operation": {
+      "enum": ["context", "capabilities", "analyze.maturity", "analyze.feature", "review.external"]
+    },
+    "repo": {"type": "string"},
+    "repo_path": {"type": "string"},
+    "request": {"type": "string"},
+    "read_only": {"type": "boolean"}
+  },
+  "additionalProperties": true
+}
+

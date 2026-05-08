@@ -15,3 +15,5 @@
 - Added stdlib unittest coverage for request classification, setup maturity detection, feature fit, and evidence enforcement.
 - Added external read-only review with read manifest and separated maturity/feature suggestions.
 - Added maturity scoring categories for setup, CLI, contracts, tests, docs, memory, harnesses, security, and evidence.
+- Added `run --payload-file` contract and request/response schemas.
+- Added sample skill fixtures for mature, weak setup, and scope-inflated cases.

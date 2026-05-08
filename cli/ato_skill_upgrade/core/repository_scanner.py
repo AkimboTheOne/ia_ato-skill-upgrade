@@ -64,4 +64,5 @@ def detect_signals(files: set[str], content_index: dict[str, str]) -> dict:
         "run_contracts": "contracts/run.request.schema.json" in files and "contracts/run.response.schema.json" in files,
         "write_policy_docs": "write_policy" in combined or "write policy" in combined or "--write" in combined,
         "cache_behavior": "cache" in combined or "ttl" in combined,
+        "scope_inflation_terms": sum(1 for term in ["platform", "https", "mcp", "catalog", "orchestrator"] if term in combined),
     }

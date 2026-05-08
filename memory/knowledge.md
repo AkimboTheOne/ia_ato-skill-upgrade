@@ -8,3 +8,5 @@
 - Python dependencies are declared in `pyproject.toml`; system binaries and compilers are prerequisites, not repository contents.
 - External review must be read-only and write outputs only into the active workspace repo.
 - Productive maturity analysis uses category scores instead of a single flat checklist.
+- `run --payload-file` is the machine-friendly surface for repeatable automation.
+- Sample skill fixtures are the preferred way to test maturity and feature suggestions without depending on remote repos.

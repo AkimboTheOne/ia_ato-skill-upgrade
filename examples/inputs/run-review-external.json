@@ -1,0 +1,6 @@
+{
+  "operation": "review.external",
+  "repo_path": "examples/sample-skills/mature-skill",
+  "read_only": true
+}
+

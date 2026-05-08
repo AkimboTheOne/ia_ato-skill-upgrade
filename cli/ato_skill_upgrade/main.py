@@ -15,6 +15,7 @@ from ato_skill_upgrade.core.iteration import create_session
 from ato_skill_upgrade.core.maturity_evaluator import evaluate_maturity, render_maturity_report
 from ato_skill_upgrade.core.natural_language import classify_request
 from ato_skill_upgrade.core.outputs import output_paths, write_json, write_text
+from ato_skill_upgrade.core.run_contract import run_payload
 from ato_skill_upgrade.errors import SkillUpgradeError
 
 
@@ -171,6 +172,15 @@ def cmd_review_external(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_run(args: argparse.Namespace) -> int:
+    workspace_repo = Path(args.repo).resolve()
+    payload_path = Path(args.payload_file)
+    if not payload_path.is_absolute():
+        payload_path = workspace_repo / payload_path
+    emit(run_payload(workspace_repo, payload_path), args.json)
+    return 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="ato-skill-upgrade", description="Controlled skill upgrade CLI")
     parser.add_argument("--version", action="version", version=__version__)
@@ -214,6 +224,12 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--text", default="")
     p.add_argument("--json", action="store_true")
     p.set_defaults(func=cmd_iterate)
+
+    p = sub.add_parser("run")
+    add_common_repo(p)
+    p.add_argument("--payload-file", required=True)
+    p.add_argument("--json", action="store_true")
+    p.set_defaults(func=cmd_run)
 
     review = sub.add_parser("review")
     review_sub = review.add_subparsers(dest="review_command", required=True)

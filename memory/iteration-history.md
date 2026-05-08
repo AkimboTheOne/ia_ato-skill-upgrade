@@ -20,3 +20,10 @@ Updated onboarding based on the reference `ia_ato-skill-ado-cli` setup improveme
 - Added read manifests for files observed during review.
 - Added category-based maturity scoring.
 - Split recommendations into maturity and feature suggestion outputs.
+
+## 0.4.0 Run Contract And Fixtures Cut
+
+- Added `run --payload-file`.
+- Added request and response schemas for machine invocation.
+- Added sample skill fixtures for mature, weak setup, and scope-inflated repositories.
+- Added tests for run payloads and fixture-based maturity gaps.

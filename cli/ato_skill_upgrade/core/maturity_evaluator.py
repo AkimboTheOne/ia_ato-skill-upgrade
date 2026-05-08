@@ -56,10 +56,12 @@ def evaluate_maturity(repo) -> dict:
         strengths.append("v0.2 harnesses for document change and inline iteration are present.")
     else:
         gaps.append("v0.2 harnesses for document change and inline iteration should be present.")
+    if signals.get("scope_inflation_terms", 0) >= 3:
+        warnings.append("Possible scope inflation detected: platform/server/catalog/orchestrator language should be governed.")
 
     categories = build_maturity_matrix(signals)
     score = round(sum(item["score"] for item in categories.values()) / len(categories))
-    status = "ready-for-next-cut" if score >= 80 and not gaps else "needs-work"
+    status = "ready-for-next-cut" if score >= 80 and not gaps and not warnings else "needs-work"
 
     return {
         "mode": "maturity",

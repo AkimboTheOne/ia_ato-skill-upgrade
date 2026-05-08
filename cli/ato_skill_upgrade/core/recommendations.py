@@ -25,6 +25,13 @@ def classify_recommendations(report: dict) -> list[dict]:
                 "message": "Use contracts and tests as machine-checkable readiness evidence.",
             }
         )
+    if signals.get("scope_inflation_terms", 0) >= 3:
+        recommendations.append(
+            {
+                "type": "out_of_scope",
+                "message": "Scope-inflation language suggests this should be governed or split before implementation.",
+            }
+        )
     return recommendations
 
 
@@ -32,4 +39,3 @@ def split_recommendations(items: list[dict]) -> tuple[list[dict], list[dict]]:
     maturity = [item for item in items if item["type"] in {"strength", "maturity_gap", "postpone"}]
     features = [item for item in items if item["type"] in {"feature_candidate", "out_of_scope"}]
     return maturity, features
-

@@ -9,6 +9,7 @@ from ato_skill_upgrade.core.maturity_evaluator import evaluate_maturity
 from ato_skill_upgrade.core.natural_language import classify_request
 from ato_skill_upgrade.core.documentation_reconciler import document_change
 from ato_skill_upgrade.core.external_review import review_external
+from ato_skill_upgrade.core.run_contract import run_payload
 from ato_skill_upgrade.errors import SkillUpgradeError
 
 
@@ -41,6 +42,17 @@ class CoreBehaviorTests(unittest.TestCase):
             result = review_external(Path(workspace), repo, read_only=True)
         self.assertTrue(result["read_only"])
         self.assertIn("external-review-report.json", result["outputs"]["external_review_report_json"])
+
+    def test_run_payload_context(self) -> None:
+        repo = Path(__file__).resolve().parents[1]
+        result = run_payload(repo, repo / "examples" / "inputs" / "run-context.json")
+        self.assertEqual(result["operation"], "context")
+
+    def test_fixture_weak_setup_has_maturity_gaps(self) -> None:
+        repo = Path(__file__).resolve().parents[1] / "examples" / "sample-skills" / "weak-setup-skill"
+        result = evaluate_maturity(repo)
+        self.assertEqual(result["status"], "needs-work")
+        self.assertTrue(result["gaps"])
 
 
 if __name__ == "__main__":
