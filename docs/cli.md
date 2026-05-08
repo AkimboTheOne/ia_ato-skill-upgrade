@@ -12,6 +12,7 @@ Implemented:
 - `validate`
 - `ask`
 - `iterate`
+- `review external`
 - `analyze maturity`
 - `analyze feature`
 - `plan maturity`

@@ -49,6 +49,7 @@ Implemented:
 - structure validation and doctor checks,
 - natural language request classification,
 - inline iteration session creation,
+- external read-only skill review,
 - maturity analysis,
 - feature-fit analysis,
 - maturity and feature plans,
@@ -56,3 +57,9 @@ Implemented:
 - document-change dry-run reconciliation with evidence classification, preview, manifest, and validation report.
 
 The local setup pattern is intentionally part of maturity knowledge: a downloaded skill should expose `./setup-skill.sh`, install into `.venv`, avoid global Python writes, and document the boundary between declared Python dependencies and host binaries.
+
+External read-only review can evaluate another local skill repository without modifying it:
+
+```bash
+ato-skill-upgrade review external --repo-path /path/to/skill --read-only --json
+```

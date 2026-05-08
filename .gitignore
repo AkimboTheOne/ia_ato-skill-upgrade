@@ -16,5 +16,5 @@ exports/skill-upgrade/charters/*
 exports/skill-upgrade/reports/*
 exports/skill-upgrade/plans/*
 exports/skill-upgrade/documentation/*
+exports/skill-upgrade/external-review/*
 !**/.gitkeep
-

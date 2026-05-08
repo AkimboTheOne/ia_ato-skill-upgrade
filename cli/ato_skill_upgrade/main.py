@@ -9,6 +9,7 @@ from ato_skill_upgrade import __version__
 from ato_skill_upgrade.core.charter_generator import generate_charter, generate_plan, render_charter, render_plan
 from ato_skill_upgrade.core.context import build_capabilities, build_context, validate_structure
 from ato_skill_upgrade.core.documentation_reconciler import document_change
+from ato_skill_upgrade.core.external_review import review_external
 from ato_skill_upgrade.core.feature_fit_evaluator import evaluate_feature, render_feature_report
 from ato_skill_upgrade.core.iteration import create_session
 from ato_skill_upgrade.core.maturity_evaluator import evaluate_maturity, render_maturity_report
@@ -162,6 +163,14 @@ def cmd_document_change(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_review_external(args: argparse.Namespace) -> int:
+    workspace_repo = Path(args.repo).resolve()
+    target_repo = Path(args.repo_path).resolve()
+    result = review_external(workspace_repo, target_repo, read_only=args.read_only)
+    emit(result, args.json)
+    return 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="ato-skill-upgrade", description="Controlled skill upgrade CLI")
     parser.add_argument("--version", action="version", version=__version__)
@@ -205,6 +214,15 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--text", default="")
     p.add_argument("--json", action="store_true")
     p.set_defaults(func=cmd_iterate)
+
+    review = sub.add_parser("review")
+    review_sub = review.add_subparsers(dest="review_command", required=True)
+    p = review_sub.add_parser("external")
+    add_common_repo(p)
+    p.add_argument("--repo-path", required=True)
+    p.add_argument("--read-only", action="store_true", default=True)
+    p.add_argument("--json", action="store_true")
+    p.set_defaults(func=cmd_review_external)
 
     for name, handler in [("analyze", cmd_analyze), ("plan", cmd_plan), ("charter", cmd_charter)]:
         p = sub.add_parser(name)

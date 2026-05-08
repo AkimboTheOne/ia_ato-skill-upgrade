@@ -59,5 +59,9 @@ def detect_signals(files: set[str], content_index: dict[str, str]) -> dict:
         "validation_docs": "docs/validation.md" in files,
         "security_docs": "docs/security.md" in files,
         "local_setup_docs": "docs/local-setup.md" in files,
+        "contracts": any(path.startswith("contracts/") and path.endswith(".json") for path in files),
+        "tests": any(path.startswith("tests/") and path.endswith(".py") for path in files),
+        "run_contracts": "contracts/run.request.schema.json" in files and "contracts/run.response.schema.json" in files,
+        "write_policy_docs": "write_policy" in combined or "write policy" in combined or "--write" in combined,
+        "cache_behavior": "cache" in combined or "ttl" in combined,
     }
-

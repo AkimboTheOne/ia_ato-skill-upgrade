@@ -57,15 +57,16 @@ def evaluate_maturity(repo) -> dict:
     else:
         gaps.append("v0.2 harnesses for document change and inline iteration should be present.")
 
-    score_total = 100
-    score = max(0, score_total - (len(gaps) * 6) - (len(warnings) * 2))
-    status = "ready-for-next-cut" if score >= 80 else "needs-work"
+    categories = build_maturity_matrix(signals)
+    score = round(sum(item["score"] for item in categories.values()) / len(categories))
+    status = "ready-for-next-cut" if score >= 80 and not gaps else "needs-work"
 
     return {
         "mode": "maturity",
         "repo": scan["repo"],
         "status": status,
         "score": score,
+        "categories": categories,
         "strengths": strengths,
         "gaps": gaps,
         "warnings": warnings,
@@ -76,6 +77,30 @@ def evaluate_maturity(repo) -> dict:
             "Use dry-run evidence before any documentation write.",
         ],
     }
+
+
+def build_maturity_matrix(signals: dict) -> dict:
+    return {
+        "setup_onboarding": score_category(
+            signals,
+            ["root_setup_entrypoint", "local_venv_install", "pep668_documented", "dependency_boundary_documented", "install_script", "setup_script", "doctor_script"],
+        ),
+        "cli_surface": score_category(signals, ["pyproject", "makefile"]),
+        "contracts_schemas": score_category(signals, ["contracts", "run_contracts"]),
+        "tests": score_category(signals, ["tests"]),
+        "docs": score_category(signals, ["readme", "skill_doc", "agents_doc", "validation_docs", "security_docs", "local_setup_docs"]),
+        "memory": score_category(signals, ["memory"]),
+        "harnesses": score_category(signals, ["harnesses", "document_change_harness", "inline_iteration_harness"]),
+        "security_write_policy": score_category(signals, ["security_docs", "write_policy_docs"]),
+        "evidence_exports": score_category(signals, ["examples", "contracts"]),
+    }
+
+
+def score_category(signals: dict, keys: list[str]) -> dict:
+    present = [key for key in keys if signals.get(key)]
+    missing = [key for key in keys if not signals.get(key)]
+    score = round((len(present) / len(keys)) * 100) if keys else 0
+    return {"score": score, "present": present, "missing": missing}
 
 
 def render_maturity_report(report: dict) -> str:
@@ -92,6 +117,8 @@ def _render_report(title: str, report: dict) -> str:
         f"- Mode: {report['mode']}\n"
         f"- Status: {report['status']}\n"
         f"- Score: {report['score']}\n\n"
+        "## Categories\n\n"
+        f"{_render_categories(report.get('categories', {}))}\n\n"
         "## Strengths\n\n"
         f"{_list(report['strengths'])}\n\n"
         "## Gaps\n\n"
@@ -101,3 +128,9 @@ def _render_report(title: str, report: dict) -> str:
         "## Recommendations\n\n"
         f"{_list(report['recommendations'])}\n"
     )
+
+
+def _render_categories(categories: dict) -> str:
+    if not categories:
+        return "- None"
+    return "\n".join(f"- {name}: {data['score']}" for name, data in categories.items())

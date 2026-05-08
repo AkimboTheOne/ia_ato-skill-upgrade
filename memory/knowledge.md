@@ -6,3 +6,5 @@
 - Local onboarding should expose a root `./setup-skill.sh` entrypoint.
 - Setup must create or reuse `.venv` and avoid installing into global Python, preventing PEP 668 failures.
 - Python dependencies are declared in `pyproject.toml`; system binaries and compilers are prerequisites, not repository contents.
+- External review must be read-only and write outputs only into the active workspace repo.
+- Productive maturity analysis uses category scores instead of a single flat checklist.

@@ -8,6 +8,7 @@ from ato_skill_upgrade.core.feature_fit_evaluator import evaluate_feature
 from ato_skill_upgrade.core.maturity_evaluator import evaluate_maturity
 from ato_skill_upgrade.core.natural_language import classify_request
 from ato_skill_upgrade.core.documentation_reconciler import document_change
+from ato_skill_upgrade.core.external_review import review_external
 from ato_skill_upgrade.errors import SkillUpgradeError
 
 
@@ -20,6 +21,7 @@ class CoreBehaviorTests(unittest.TestCase):
         repo = Path(__file__).resolve().parents[1]
         result = evaluate_maturity(repo)
         self.assertIn("Local setup is a maturity strength and should be proposed as a reusable pattern for target skills.", result["strengths"])
+        self.assertIn("setup_onboarding", result["categories"])
 
     def test_setup_feature_fit_is_accepted_when_signals_exist(self) -> None:
         repo = Path(__file__).resolve().parents[1]
@@ -33,7 +35,13 @@ class CoreBehaviorTests(unittest.TestCase):
                 document_change(Path(tmp))
         self.assertEqual(ctx.exception.exit_code, 10)
 
+    def test_external_review_is_read_only_and_writes_workspace_outputs(self) -> None:
+        repo = Path(__file__).resolve().parents[1]
+        with tempfile.TemporaryDirectory() as workspace:
+            result = review_external(Path(workspace), repo, read_only=True)
+        self.assertTrue(result["read_only"])
+        self.assertIn("external-review-report.json", result["outputs"]["external_review_report_json"])
+
 
 if __name__ == "__main__":
     unittest.main()
-

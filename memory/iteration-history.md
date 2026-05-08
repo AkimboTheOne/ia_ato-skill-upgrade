@@ -13,3 +13,10 @@ Updated onboarding based on the reference `ia_ato-skill-ado-cli` setup improveme
 - host prerequisite checks,
 - PEP 668 avoidance,
 - explicit dependency boundary between Python packages and system binaries.
+
+## 0.3.0 External Review Cut
+
+- Added read-only external review for local skill repositories.
+- Added read manifests for files observed during review.
+- Added category-based maturity scoring.
+- Split recommendations into maturity and feature suggestion outputs.

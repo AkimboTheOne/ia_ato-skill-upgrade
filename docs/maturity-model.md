@@ -2,6 +2,18 @@
 
 Maturity analysis checks structure, documentation, safety, examples, memory, harnesses, and local setup.
 
+The product maturity matrix uses these categories:
+
+- setup/onboarding,
+- CLI surface,
+- contracts/schemas,
+- tests,
+- docs,
+- memory,
+- harnesses,
+- security/write policy,
+- evidence/exports.
+
 Local setup is a first-class maturity signal when:
 
 - `setup-skill.sh` exists at repository root,
@@ -12,4 +24,3 @@ Local setup is a first-class maturity signal when:
 - system binaries and compilers are host prerequisites.
 
 The setup pattern is reported as a strength and should be proposed when evaluating other skills.
-

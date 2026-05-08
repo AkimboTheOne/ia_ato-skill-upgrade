@@ -8,3 +8,4 @@
 - Root `setup-skill.sh` exists for clone/download onboarding.
 - Installation uses local `.venv` instead of global Python.
 - Missing system binaries are treated as host prerequisites, not vendored repo contents.
+- External review produces category scores, not only a flat pass/fail result.
