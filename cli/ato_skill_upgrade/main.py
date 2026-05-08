@@ -157,8 +157,11 @@ def cmd_document_change(args: argparse.Namespace) -> int:
         summary=args.summary,
         manifest=args.manifest,
         diff=args.diff,
+        review_report=args.review_report,
         write=args.write,
         yes=args.yes,
+        self_review=args.self_review,
+        max_depth=args.max_depth,
     )
     emit(result, args.json)
     return 0
@@ -257,9 +260,12 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--summary", default="")
     p.add_argument("--manifest", default="")
     p.add_argument("--diff", default="")
+    p.add_argument("--review-report", default="")
     p.add_argument("--dry-run", action="store_true", default=True)
     p.add_argument("--write", action="store_true")
     p.add_argument("--yes", action="store_true")
+    p.add_argument("--self-review", action="store_true")
+    p.add_argument("--max-depth", type=int, default=1)
     p.add_argument("--json", action="store_true")
     p.set_defaults(func=cmd_document_change)
 

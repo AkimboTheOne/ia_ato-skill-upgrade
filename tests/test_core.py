@@ -54,6 +54,19 @@ class CoreBehaviorTests(unittest.TestCase):
         self.assertEqual(result["status"], "needs-work")
         self.assertTrue(result["gaps"])
 
+    def test_self_review_blocks_write(self) -> None:
+        repo = Path(__file__).resolve().parents[1]
+        with self.assertRaises(SkillUpgradeError) as ctx:
+            document_change(repo, summary="examples/inputs/execution-summary.md", write=True, yes=True, self_review=True)
+        self.assertEqual(ctx.exception.exit_code, 11)
+
+    def test_review_report_is_detected_evidence(self) -> None:
+        repo = Path(__file__).resolve().parents[1]
+        with tempfile.TemporaryDirectory() as workspace:
+            review = review_external(Path(workspace), repo, read_only=True)
+            result = document_change(Path(workspace), review_report=review["outputs"]["external_review_report_json"], self_review=True)
+        self.assertIn("external review report detected", result["evidence_status"]["detected"])
+
 
 if __name__ == "__main__":
     unittest.main()

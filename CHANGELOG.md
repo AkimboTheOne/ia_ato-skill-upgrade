@@ -17,3 +17,5 @@
 - Added maturity scoring categories for setup, CLI, contracts, tests, docs, memory, harnesses, security, and evidence.
 - Added `run --payload-file` contract and request/response schemas.
 - Added sample skill fixtures for mature, weak setup, and scope-inflated cases.
+- Added document reconciler support for external review reports.
+- Added self-review guardrails that block writes and cap recursion depth.

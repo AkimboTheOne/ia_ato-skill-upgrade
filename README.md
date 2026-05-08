@@ -56,6 +56,7 @@ Implemented:
 - maturity and feature charters,
 - document-change dry-run reconciliation with evidence classification, preview, manifest, and validation report.
 - machine-friendly `run --payload-file` contracts.
+- guarded self-review for dry-run documentation planning.
 
 The local setup pattern is intentionally part of maturity knowledge: a downloaded skill should expose `./setup-skill.sh`, install into `.venv`, avoid global Python writes, and document the boundary between declared Python dependencies and host binaries.
 
@@ -69,4 +70,10 @@ Machine invocation:
 
 ```bash
 ato-skill-upgrade run --payload-file examples/inputs/run-context.json --json
+```
+
+Guarded self-review:
+
+```bash
+ato-skill-upgrade document change --review-report exports/skill-upgrade/external-review/external-review-report.json --self-review --json
 ```

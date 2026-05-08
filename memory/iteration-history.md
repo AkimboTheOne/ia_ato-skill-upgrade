@@ -27,3 +27,10 @@ Updated onboarding based on the reference `ia_ato-skill-ado-cli` setup improveme
 - Added request and response schemas for machine invocation.
 - Added sample skill fixtures for mature, weak setup, and scope-inflated repositories.
 - Added tests for run payloads and fixture-based maturity gaps.
+
+## 0.5.0 Self Review And Document Reconciler Cut
+
+- Added `--review-report` evidence input to document change.
+- Added self-review guardrails.
+- Blocked writes during self-review.
+- Capped self-review recursion depth at 1.

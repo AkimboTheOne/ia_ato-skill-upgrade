@@ -12,3 +12,5 @@
 - `review external --read-only` writes outputs only under the active workspace exports directory.
 - `run --payload-file` returns an object with `operation` and `result`.
 - Sample skill fixtures exercise mature and weak setup paths.
+- `document change --self-review --write` is blocked.
+- `document change --review-report` treats external review JSON as detected evidence.

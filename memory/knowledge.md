@@ -10,3 +10,5 @@
 - Productive maturity analysis uses category scores instead of a single flat checklist.
 - `run --payload-file` is the machine-friendly surface for repeatable automation.
 - Sample skill fixtures are the preferred way to test maturity and feature suggestions without depending on remote repos.
+- Self-review is allowed only as dry-run with maximum depth 1.
+- External review reports are detected evidence for documentation reconciliation.

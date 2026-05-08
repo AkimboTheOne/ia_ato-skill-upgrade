@@ -9,3 +9,5 @@
 - Separate external review recommendations into maturity suggestions and feature suggestions.
 - Add `run` contracts before deeper document reconciliation so downstream agents can call stable operations.
 - Keep sample skills local and synthetic for deterministic smoke tests.
+- Block write operations during self-review to prevent recursive self-modification.
+- Let document reconciliation consume external review reports as detected evidence.

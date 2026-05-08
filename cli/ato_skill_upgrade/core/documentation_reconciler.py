@@ -28,10 +28,17 @@ def document_change(
     summary: str = "",
     manifest: str = "",
     diff: str = "",
+    review_report: str = "",
     write: bool = False,
     yes: bool = False,
+    self_review: bool = False,
+    max_depth: int = 1,
 ) -> dict:
-    evidence = collect_evidence(repo, plan, summary, manifest, diff)
+    if self_review and write:
+        raise SkillUpgradeError("self-review bloquea --write; usa dry-run", 11)
+    if max_depth > 1:
+        raise SkillUpgradeError("self-review max-depth mayor a 1 bloqueado para evitar recursividad", 12)
+    evidence = collect_evidence(repo, plan, summary, manifest, diff, review_report)
     if not any(evidence[key] for key in ["detected", "reported", "inferred"]):
         raise SkillUpgradeError("evidencia insuficiente para documentar", 10)
     if write and not yes:
@@ -70,14 +77,17 @@ def document_change(
             "summary": summary,
             "manifest": manifest,
             "diff": diff,
+            "review_report": review_report,
         },
+        "self_review": self_review,
+        "max_depth": max_depth,
         "evidence_status": evidence,
         "files_planned": sorted(updates),
         "files_updated": files_updated,
         "write_enabled": write,
         "dry_run": not write,
         "risks": [],
-        "warnings": [] if write else ["dry-run only; no files were modified"],
+        "warnings": build_warnings(write, self_review),
         "acceptance": [
             "Evidence was classified.",
             "Preview was generated before write.",
@@ -97,9 +107,9 @@ def document_change(
     return manifest_data
 
 
-def collect_evidence(repo: Path, plan: str, summary: str, manifest: str, diff: str) -> dict:
+def collect_evidence(repo: Path, plan: str, summary: str, manifest: str, diff: str, review_report: str = "") -> dict:
     evidence = {"detected": [], "reported": [], "inferred": [], "pending": []}
-    for label, rel in [("plan", plan), ("summary", summary), ("manifest", manifest), ("diff", diff)]:
+    for label, rel in [("plan", plan), ("summary", summary), ("manifest", manifest), ("diff", diff), ("review_report", review_report)]:
         if not rel:
             evidence["pending"].append(f"{label} not provided")
             continue
@@ -107,13 +117,39 @@ def collect_evidence(repo: Path, plan: str, summary: str, manifest: str, diff: s
         if not path.is_absolute():
             path = repo / path
         if path.exists():
-            target = "detected" if label in {"manifest", "diff"} else "reported"
+            target = "detected" if label in {"manifest", "diff", "review_report"} else "reported"
             evidence[target].append(f"{label}: {path}")
+            if label == "review_report":
+                extract_review_evidence(path, evidence)
         else:
             evidence["pending"].append(f"{label} missing: {path}")
     if evidence["reported"] or evidence["detected"]:
         evidence["inferred"].append("Documentation reconciliation is allowed because at least one evidence source exists.")
     return evidence
+
+
+def extract_review_evidence(path: Path, evidence: dict) -> None:
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+    except json.JSONDecodeError:
+        evidence["pending"].append(f"review_report is not JSON: {path}")
+        return
+    if data.get("mode") == "external-review":
+        evidence["detected"].append("external review report detected")
+        target = data.get("target_repo")
+        if target:
+            evidence["reported"].append(f"external review target: {target}")
+        for item in data.get("recommendations", [])[:10]:
+            evidence["inferred"].append(f"{item.get('type')}: {item.get('message')}")
+
+
+def build_warnings(write: bool, self_review: bool) -> list[str]:
+    warnings = []
+    if not write:
+        warnings.append("dry-run only; no files were modified")
+    if self_review:
+        warnings.append("self-review guardrail active; write is blocked")
+    return warnings
 
 
 def build_updates(evidence: dict) -> dict[str, str]:
@@ -133,11 +169,13 @@ def build_updates(evidence: dict) -> dict[str, str]:
             "## Documentation Knowledge Update\n\n"
             "- Document mode must classify evidence as detected, reported, inferred, or pending before proposing writes.\n"
             "- Setup robustness remains a maturity strength when local onboarding evidence exists.\n"
+            "- External review reports can be consumed as detected evidence for documentation planning.\n"
         ),
         "harnesses/document-change-checks.md": (
             "## Runtime Checks\n\n"
             "- Documentation reconciliation must generate preview, manifest, and validation report.\n"
             "- Writes require `--write --yes` and must target allowed documentation paths only.\n"
+            "- Self-review blocks writes and caps recursion depth at 1.\n"
         ),
     }
 
@@ -176,4 +214,3 @@ def render_documentation_plan(updates: dict[str, str], evidence: dict) -> str:
         "## Files Planned\n\n"
         f"{files}\n"
     )
-
