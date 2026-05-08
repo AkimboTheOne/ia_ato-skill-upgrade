@@ -1,0 +1,21 @@
+# CLI
+
+Implemented:
+
+- `./setup-skill.sh`
+- `context`
+- `capabilities`
+- `usage`
+- `examples`
+- `schema`
+- `doctor`
+- `validate`
+- `ask`
+- `iterate`
+- `analyze maturity`
+- `analyze feature`
+- `plan maturity`
+- `plan feature`
+- `charter maturity`
+- `charter feature`
+- `document change`

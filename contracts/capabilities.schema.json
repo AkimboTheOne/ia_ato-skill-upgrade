@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ato-skill-upgrade capabilities",
+  "type": "object",
+  "required": ["modes", "commands", "guardrails"],
+  "properties": {
+    "modes": {"type": "object"},
+    "commands": {"type": "array", "items": {"type": "string"}},
+    "guardrails": {"type": "array", "items": {"type": "string"}}
+  }
+}
+

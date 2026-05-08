@@ -1,0 +1,15 @@
+# Maturity Model
+
+Maturity analysis checks structure, documentation, safety, examples, memory, harnesses, and local setup.
+
+Local setup is a first-class maturity signal when:
+
+- `setup-skill.sh` exists at repository root,
+- setup creates or reuses `.venv`,
+- global Python installation is avoided,
+- PEP 668 is documented,
+- Python dependencies are declared in `pyproject.toml`,
+- system binaries and compilers are host prerequisites.
+
+The setup pattern is reported as a strength and should be proposed when evaluating other skills.
+

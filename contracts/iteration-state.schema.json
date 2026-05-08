@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "iteration state",
+  "type": "object",
+  "required": ["state", "mode", "request", "open_questions", "assumptions", "risks"],
+  "properties": {
+    "state": {"enum": ["draft", "questions", "assumptions", "proposal", "confirmed", "finalized", "documented"]},
+    "mode": {"type": "string"},
+    "request": {"type": "string"},
+    "open_questions": {"type": "array", "items": {"type": "string"}},
+    "assumptions": {"type": "array", "items": {"type": "string"}},
+    "risks": {"type": "array", "items": {"type": "string"}}
+  }
+}
+

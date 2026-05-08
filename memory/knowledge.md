@@ -1,0 +1,8 @@
+# Knowledge
+
+- Baseline v0.2 treats `ato-skill-upgrade` as a support skill for the main coding agent.
+- The skill helps think, plan, and document; it does not replace execution by the main agent.
+- `document` mode documents only executed or verifiable changes.
+- Local onboarding should expose a root `./setup-skill.sh` entrypoint.
+- Setup must create or reuse `.venv` and avoid installing into global Python, preventing PEP 668 failures.
+- Python dependencies are declared in `pyproject.toml`; system binaries and compilers are prerequisites, not repository contents.

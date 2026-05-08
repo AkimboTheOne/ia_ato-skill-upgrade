@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "documentation update manifest",
+  "type": "object",
+  "required": ["mode", "repo", "inputs", "evidence_status", "files_planned", "files_updated", "write_enabled", "dry_run"],
+  "properties": {
+    "mode": {"const": "document"},
+    "repo": {"type": "string"},
+    "inputs": {"type": "object"},
+    "evidence_status": {"type": "object"},
+    "files_planned": {"type": "array", "items": {"type": "string"}},
+    "files_updated": {"type": "array", "items": {"type": "string"}},
+    "write_enabled": {"type": "boolean"},
+    "dry_run": {"type": "boolean"}
+  }
+}
+

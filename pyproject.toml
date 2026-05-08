@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ato-skill-upgrade"
+version = "0.2.0"
+description = "Controlled skill upgrade planning and documentation CLI"
+requires-python = ">=3.11"
+dependencies = []
+
+[project.scripts]
+ato-skill-upgrade = "ato_skill_upgrade.main:run"
+
+[tool.setuptools]
+package-dir = {"" = "cli"}
+
+[tool.setuptools.packages.find]
+where = ["cli"]
+

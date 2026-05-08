@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ato-skill-upgrade context",
+  "type": "object",
+  "required": ["skill", "version", "activation", "modes"],
+  "properties": {
+    "skill": {"type": "string"},
+    "version": {"type": "string"},
+    "activation": {"type": "string"},
+    "modes": {"type": "array", "items": {"type": "string"}}
+  }
+}
+

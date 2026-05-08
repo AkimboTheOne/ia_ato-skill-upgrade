@@ -1,0 +1,39 @@
+defaults:
+  repo: "."
+  workspace_dir: "workspace/skill-upgrade"
+  export_dir: "exports/skill-upgrade"
+  output: "md"
+  allow_local_commands: false
+  max_scan_files: 2000
+  max_file_size_kb: 512
+
+inline_iteration:
+  enabled: true
+  persist_sessions: true
+  require_confirmation_before_plan: true
+
+document_change:
+  default_dry_run: true
+  require_evidence: true
+  require_write_confirmation: true
+  allowed_files:
+    - README.md
+    - SKILL.md
+    - AGENTS.md
+    - CHANGELOG.md
+    - docs/**
+    - memory/**
+    - harnesses/**
+  denied_files:
+    - cli/**
+    - src/**
+    - services/**
+    - server/**
+    - mcp/**
+    - contracts/**
+    - schemas/**
+    - tests/**
+    - scripts/**
+    - pyproject.toml
+    - Makefile
+
