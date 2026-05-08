@@ -10,6 +10,7 @@ Agents should:
 - preserve the atomic purpose of the target skill,
 - produce Markdown and JSON evidence,
 - keep write operations explicit and documented.
+- use the Spanish canonical memory terminology in `memory/terminology-es.md` for durable definitions, decisions, and history.
 
 Agents must not:
 
@@ -17,4 +18,3 @@ Agents must not:
 - modify source code through `document` mode,
 - expand the target skill scope without approval,
 - commit, push, or open PRs unless the user separately asks for repository publishing work.
-

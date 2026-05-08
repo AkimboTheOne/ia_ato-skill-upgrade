@@ -1,55 +1,55 @@
-# Iteration History
+# Historial de Iteraciones
 
 ## 0.2.0 Scaffold
 
-Created the baseline repository structure and CLI scaffold from the v0.2 requirement document.
+Se creó la estructura baseline del repositorio y el scaffold de CLI a partir del documento de requisitos v0.2.
 
-## 0.2.0 Local Setup Maturity Update
+## 0.2.0 Actualización de Madurez de Local Setup
 
-Updated onboarding based on the reference `ia_ato-skill-ado-cli` setup improvement:
+Se actualizó el onboarding tomando como referencia la mejora de setup de `ia_ato-skill-ado-cli`:
 
-- root `setup-skill.sh`,
-- `.venv`-only install path,
-- host prerequisite checks,
-- PEP 668 avoidance,
-- explicit dependency boundary between Python packages and system binaries.
+- `setup-skill.sh` en la raíz,
+- ruta de instalación exclusiva en `.venv`,
+- validación de prerrequisitos del host,
+- evitación de PEP 668,
+- frontera explícita entre dependencias Python y binarios del sistema.
 
-## 0.3.0 External Review Cut
+## 0.3.0 Corte de External Review
 
-- Added read-only external review for local skill repositories.
-- Added read manifests for files observed during review.
-- Added category-based maturity scoring.
-- Split recommendations into maturity and feature suggestion outputs.
+- Se añadió external review de solo lectura para repos locales de skills.
+- Se añadieron read manifests para los archivos observados durante la revisión.
+- Se añadió scoring de madurez por categoría.
+- Se separaron las recomendaciones en salidas de madurez y de feature.
 
-## 0.4.0 Run Contract And Fixtures Cut
+## 0.4.0 Corte de Run Contract y Fixtures
 
-- Added `run --payload-file`.
-- Added request and response schemas for machine invocation.
-- Added sample skill fixtures for mature, weak setup, and scope-inflated repositories.
-- Added tests for run payloads and fixture-based maturity gaps.
+- Se añadió `run --payload-file`.
+- Se añadieron schemas de request y response para invocación máquina.
+- Se añadieron fixtures sintéticos para repos maduros, con setup débil y con scope inflado.
+- Se añadieron tests para payloads de `run` y brechas de madurez basadas en fixtures.
 
-## 0.5.0 Self Review And Document Reconciler Cut
+## 0.5.0 Corte de Self Review y Document Reconciler
 
-- Added `--review-report` evidence input to document change.
-- Added self-review guardrails.
-- Blocked writes during self-review.
-- Capped self-review recursion depth at 1.
+- Se añadió la entrada `--review-report` como evidencia para `document change`.
+- Se añadieron guardrails de auto-revisión.
+- Se bloquearon las escrituras durante la auto-revisión.
+- Se limitó la profundidad recursiva de auto-revisión a 1.
 
-## 0.7.0 Validation And Scoring Cut
+## 0.7.0 Corte de Validación y Scoring
 
-- Added lightweight contract validation.
-- Added richer maturity statuses.
-- Completed mature fixture examples for cleaner smoke testing.
+- Se añadió validación ligera de contratos.
+- Se añadieron estados de madurez más expresivos.
+- Se completaron los ejemplos de fixture maduro para smoke tests más limpios.
 
-## 0.8.0 CI And Release Governance Cut
+## 0.8.0 Corte de CI y Release Governance
 
-- Added GitHub Actions CI.
-- Added release governance documentation.
-- Synchronized version metadata.
-- Added version validation.
+- Se añadió CI de GitHub Actions.
+- Se añadió documentación de release governance.
+- Se sincronizó el metadato de versión.
+- Se añadió validación de versión.
 
-## 0.8.0 Release Preparation
+## 0.8.0 Preparación de Release
 
-- Added release notes.
-- Prepared branch for PR toward `main`.
-- Planned version tag `v0.8.0`.
+- Se añadieron release notes.
+- Se preparó la promoción estable hacia `master`.
+- Se planificó el tag de versión `v0.8.0`.

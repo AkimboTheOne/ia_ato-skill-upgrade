@@ -1,19 +1,19 @@
-# Decisions
+# Decisiones
 
-- Use stdlib `argparse` for the first implementation cut to avoid dependency installation as a blocker.
-- Keep `analyze`, `plan`, `charter`, and `document change` scaffolded until the core logic lands.
-- Follow the local `.venv` setup pattern observed in `ia_ato-skill-ado-cli`.
-- Add root `setup-skill.sh` as the preferred onboarding command after clone/download.
-- Treat installation robustness as a maturity concern: detect host prerequisites, install into `.venv`, and never vendor binaries or compilers.
-- Add `review external` as the first productive path for evaluating other skills without modifying them.
-- Separate external review recommendations into maturity suggestions and feature suggestions.
-- Add `run` contracts before deeper document reconciliation so downstream agents can call stable operations.
-- Keep sample skills local and synthetic for deterministic smoke tests.
-- Block write operations during self-review to prevent recursive self-modification.
-- Let document reconciliation consume external review reports as detected evidence.
-- Keep JSON schema validation dependency-free until a stronger validator is justified.
-- Use `ready-with-notes` for high-scoring skills with small evidence gaps.
-- Move current implementation version to `0.8.0` after CI and release governance are added.
-- Keep CI minimal: setup, validate, and tests.
-- Use tag `v0.8.0` for the first solid pre-productive release.
-- Open a PR into `main` for traceable promotion instead of merging directly.
+- Usar `argparse` de la biblioteca estándar en el primer corte de implementación para no bloquearse por instalación de dependencias.
+- Mantener `analyze`, `plan`, `charter` y `document change` en modo scaffold hasta que la lógica central quede implementada.
+- Seguir el patrón local de instalación en `.venv` observado en `ia_ato-skill-ado-cli`.
+- Añadir `setup-skill.sh` en la raíz como comando preferido de onboarding después del clone o download.
+- Tratar la robustez de instalación como una preocupación de madurez: detectar prerrequisitos del host, instalar en `.venv` y no vendorizar binarios ni compiladores.
+- Añadir `review external` como el primer camino productivo para evaluar otros skills sin modificarlos.
+- Separar las recomendaciones de external review en sugerencias de madurez y sugerencias de feature.
+- Añadir contratos `run` antes de profundizar en la reconciliación documental para que otros agentes puedan invocar operaciones estables.
+- Mantener los sample skills locales y sintéticos para smoke tests deterministas.
+- Bloquear operaciones de escritura durante la auto-revisión para evitar auto-modificación recursiva.
+- Permitir que la reconciliación documental consuma reportes de external review como evidencia detectada.
+- Mantener la validación de JSON Schema sin dependencias hasta que exista una justificación más fuerte para usar otra librería.
+- Usar `ready-with-notes` para skills con score alto y brechas pequeñas de evidencia.
+- Mover la versión de implementación a `0.8.0` después de agregar CI y governance de release.
+- Mantener la CI mínima: `setup`, `validate` y tests.
+- Usar el tag `v0.8.0` para la primera release sólida pre-productiva.
+- Abrir PR hacia `master` para promoción trazable en lugar de merge directo.

@@ -41,3 +41,4 @@ The skill treats robust local onboarding as a maturity feature:
 - Do not modify code in `document` mode.
 - Do not document unexecuted work as completed.
 - Do not generate a final plan when critical ambiguity remains unresolved.
+- Use the Spanish canonical memory terminology in `memory/terminology-es.md` when editing durable definitions or iteration history.

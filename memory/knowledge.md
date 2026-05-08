@@ -1,18 +1,18 @@
-# Knowledge
+# Conocimiento
 
-- Baseline v0.2 treats `ato-skill-upgrade` as a support skill for the main coding agent.
-- The skill helps think, plan, and document; it does not replace execution by the main agent.
-- `document` mode documents only executed or verifiable changes.
-- Local onboarding should expose a root `./setup-skill.sh` entrypoint.
-- Setup must create or reuse `.venv` and avoid installing into global Python, preventing PEP 668 failures.
-- Python dependencies are declared in `pyproject.toml`; system binaries and compilers are prerequisites, not repository contents.
-- External review must be read-only and write outputs only into the active workspace repo.
-- Productive maturity analysis uses category scores instead of a single flat checklist.
-- `run --payload-file` is the machine-friendly surface for repeatable automation.
-- Sample skill fixtures are the preferred way to test maturity and feature suggestions without depending on remote repos.
-- Self-review is allowed only as dry-run with maximum depth 1.
-- External review reports are detected evidence for documentation reconciliation.
-- Maturity status should distinguish minor gaps from material failure.
-- Schema validation is lightweight and dependency-free in this phase.
-- v0.8 introduces CI and version consistency validation.
-- Release readiness requires setup, validate, tests, maturity analysis, external review, changelog, memory, and synchronized version metadata.
+- `ato-skill-upgrade` es un skill de soporte para el agente principal de codificación.
+- El skill ayuda a pensar, planificar y documentar; no sustituye la ejecución del agente principal.
+- El modo `document` documenta únicamente cambios ejecutados o verificables.
+- El onboarding local debe exponer un entrypoint raíz `./setup-skill.sh`.
+- La instalación debe crear o reutilizar `.venv` y evitar escribir en Python global para prevenir fallos de PEP 668.
+- Las dependencias de Python se declaran en `pyproject.toml`; los binarios y compiladores del sistema son prerrequisitos, no contenido del repositorio.
+- `review external` debe operar en solo lectura y escribir sus salidas únicamente en el workspace activo.
+- El análisis de madurez productiva usa puntuaciones por categoría en lugar de un checklist plano.
+- `run --payload-file` es la superficie máquina para automatización repetible.
+- Los fixtures sintéticos de skills son la forma preferida de probar sugerencias de madurez y feature sin depender de repos remotos.
+- La auto-revisión solo se permite en dry-run y con profundidad máxima 1.
+- Los reportes de external review cuentan como evidencia detectada para la reconciliación documental.
+- El estado de madurez debe distinguir brechas menores de fallas materiales.
+- La validación de schemas es liviana y sin dependencias en esta fase.
+- `v0.8` introduce CI y validación de consistencia de versión.
+- La preparación de release requiere `setup`, `validate`, tests, análisis de madurez, external review, changelog, memoria y metadatos de versión sincronizados.
